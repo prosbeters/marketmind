@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MarketMind Ultimate - Intelligence 2026 Vision</title>
+    <title>MarketMind Ultimate - Platinum Elite v6.8</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -11,29 +11,25 @@
         :root {
             --gold: #d4af37;
             --navy-pitch: #02040a;
-            --glass: rgba(10, 15, 30, 0.85);
+            --glass: rgba(10, 15, 30, 0.9);
         }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--navy-pitch);
             color: #f8fafc;
-            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
         }
 
         .font-luxury { font-family: 'Playfair Display', serif; }
 
-        /* Scrollbar Stealth Premium */
-        ::-webkit-scrollbar { width: 4px; }
+        /* Scrollbar Premium Stealth */
+        ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: #000; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
-
-        .glass-panel {
-            background: var(--glass);
-            backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-        }
 
         .gold-gradient-text {
             background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
@@ -41,17 +37,18 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .btn-luxury {
+        .card-feature {
             background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(212, 175, 55, 0.05);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: left;
         }
 
-        .btn-luxury:hover {
-            border-color: var(--gold);
-            background: rgba(212, 175, 55, 0.05);
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.1);
-            transform: translateY(-3px);
+        .card-feature:hover {
+            background: rgba(212, 175, 55, 0.04);
+            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
         }
 
         .btn-gold {
@@ -61,282 +58,211 @@
             transition: all 0.3s ease;
         }
 
-        .btn-gold:hover { transform: scale(1.02); box-shadow: 0 0 35px rgba(212, 175, 55, 0.4); }
+        .btn-gold:hover { transform: scale(1.02); box-shadow: 0 0 30px rgba(212, 175, 55, 0.4); }
 
-        /* Mencegah Kolom Putih & Warna Input Global */
+        /* Form Inputs - Standard ProSbe */
         input, select, textarea {
             background-color: #000000 !important;
-            background: #000000 !important;
-            border: 1px solid rgba(212, 175, 55, 0.2) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
             color: #ffffff !important;
             outline: none !important;
-            appearance: none;
         }
+        input:focus, textarea:focus, select:focus { border-color: var(--gold) !important; box-shadow: 0 0 10px rgba(212,175,55,0.1); }
 
-        input::placeholder, textarea::placeholder {
-            color: rgba(255, 255, 255, 0.3) !important;
-        }
+        /* Output Content Typography - SOP JUSTIFIED */
+        #res-body { line-height: 1.8; color: #cbd5e1; text-align: justify !important; font-size: 1.05rem; }
+        #res-body h2 { color: var(--gold); margin: 2.5rem 0 1rem; font-weight: 800; text-transform: uppercase; text-align: left; border-bottom: 1px solid rgba(212, 175, 55, 0.2); padding-bottom: 0.5rem; }
+        #res-body p, #res-body li { margin-bottom: 1.2rem; text-align: justify !important; }
+        #res-body li { position: relative; padding-left: 1.8rem; list-style: none; }
+        #res-body li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: bold; }
+        #res-body strong { color: #fff; font-weight: 800; }
 
-        /* Override Autofill Browser */
-        input:-webkit-autofill,
-        input:-webkit-autofill:hover, 
-        input:-webkit-autofill:focus, 
-        input:-webkit-autofill:active {
-            -webkit-box-shadow: 0 0 0 1000px #000000 inset !important;
-            -webkit-text-fill-color: #ffffff !important;
-            transition: background-color 5000s ease-in-out 0s;
-        }
-
-        /* Tooltip Master */
-        .info-tooltip {
-            display: none;
-            position: absolute;
-            top: 100%;
-            margin-top: 1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 16rem;
-            padding: 1.5rem;
-            background: #000;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 1.5rem;
-            z-index: 120;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-        .info-trigger-area:hover .info-tooltip {
-            display: block;
-        }
-
-        /* Formatting Hasil Analisa */
-        #res-body { line-height: 1.8; color: #cbd5e1; text-align: justify; font-size: 1rem; }
-        #res-body h2 { border-bottom: 2px solid rgba(212, 175, 55, 0.2); padding-bottom: 0.5rem; font-size: 1.5rem; color: var(--gold); margin: 2rem 0 1rem; }
-        #res-body ul { list-style: none; padding: 0; margin-bottom: 1.5rem; }
-        #res-body li { position: relative; padding-left: 2rem; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.02); padding-bottom: 1rem; }
-        #res-body li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: bold; font-size: 1.2rem; }
-        #res-body strong { color: var(--gold); font-weight: 800; }
-        
         .spinner-luxury {
-            width: 50px; height: 50px;
+            width: 35px; height: 35px;
             border: 3px solid rgba(212, 175, 55, 0.1);
             border-top: 3px solid var(--gold);
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
-
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .pdf-page-header { display: none; padding-bottom: 20px; border-bottom: 2px solid var(--gold); margin-bottom: 30px; }
-        .watermark {
-            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-45deg);
-            font-size: 8rem; font-weight: 900; color: rgba(0, 0, 0, 0.03);
-            white-space: nowrap; pointer-events: none; z-index: -1; text-transform: uppercase;
-        }
-        .tutorial-overlay { background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); }
     </style>
 </head>
-<body class="selection:bg-gold selection:text-black">
+<body class="bg-black text-slate-200">
 
-    <!-- LOGIN SUITE -->
-    <div id="login-screen" class="min-h-screen flex items-center justify-center p-6 transition-opacity duration-500 bg-black">
-        <div class="w-full max-w-lg glass-panel rounded-[2.5rem] p-12 shadow-2xl relative overflow-hidden text-center border border-white/5">
-            <div class="mb-12 text-shadow">
-                <h1 class="text-6xl font-luxury gold-gradient-text mb-2 tracking-tighter">MarketMind</h1>
-                <p class="text-slate-500 uppercase tracking-[0.5em] text-[9px] font-extrabold">Sahabat Bisnis Bapak</p>
+    <!-- LOGIN SCREEN -->
+    <div id="login-screen" class="min-h-screen flex flex-col items-center justify-start p-6 bg-black overflow-y-auto fixed inset-0 z-[1000] pt-20 pb-20">
+        <div class="w-full max-w-lg bg-[#080808] rounded-[3rem] p-12 shadow-2xl border border-white/5 my-auto">
+            <div class="mb-10 text-center">
+                <h1 class="text-5xl font-luxury gold-gradient-text mb-3 tracking-tighter italic font-bold">MarketMind Ultimate</h1>
+                <p class="text-slate-500 uppercase tracking-[0.4em] text-[10px] font-bold">The Brain of Strategy</p>
             </div>
 
-            <form id="login-form" class="space-y-5 text-left" autocomplete="off">
-                <div class="space-y-1.5">
-                    <label class="text-[9px] uppercase font-bold text-slate-500 ml-1 tracking-[0.2em]">Work Email</label>
-                    <input type="email" id="login-email" required class="w-full rounded-2xl px-5 py-4 text-sm" placeholder="Contoh: ceo@bisnis.com" autocomplete="email">
-                </div>
-                <div class="space-y-1.5">
-                    <label class="text-[9px] uppercase font-bold text-slate-500 ml-1 tracking-[0.2em]">Akses Token</label>
-                    <input type="password" id="login-password" required class="w-full rounded-2xl px-5 py-4 text-sm" placeholder="••••••••" autocomplete="current-password">
-                </div>
-                <div class="pt-2 text-shadow">
-                    <div class="flex justify-between items-center mb-1.5">
-                        <label class="text-[9px] uppercase font-bold text-slate-500 ml-1 tracking-[0.2em]">Kunci AI Gemini</label>
-                        <button type="button" id="delete-api-btn" class="hidden text-[9px] text-red-500 hover:text-red-400 font-bold uppercase">Revoke</button>
-                    </div>
-                    <input type="password" id="api-key-input" class="w-full rounded-2xl px-5 py-4 text-sm" placeholder="Tempel kunci AI di sini" autocomplete="new-password">
+            <form id="login-form" class="space-y-6" autocomplete="off">
+                <div class="space-y-3">
+                    <label class="text-[10px] uppercase font-black text-slate-400 ml-1 tracking-widest">Akses Intelligence Key (Google AI Studio)</label>
+                    <input type="password" id="api-key-input" required class="w-full rounded-2xl px-6 py-5 text-sm" placeholder="Paste kunci AI Bapak di sini...">
                     
-                    <button type="button" onclick="window.toggleTutorial(true)" class="mt-2 text-[9px] font-bold text-gold/60 hover:text-gold uppercase tracking-widest flex items-center gap-1 transition-all">
-                        <span>❔ Cara mendapatkan kunci AI?</span>
+                    <button type="button" onclick="window.toggleTutorial(true)" class="text-[10px] font-bold text-gold/80 hover:text-gold uppercase tracking-wider transition-colors px-1">
+                        ❔ Tutorial Mendapatkan Kunci AI
                     </button>
                 </div>
-                <button id="login-btn" type="submit" class="w-full btn-gold py-5 rounded-2xl uppercase tracking-[0.3em] text-xs flex items-center justify-center gap-3 mt-8 transition-all shadow-2xl">
-                    <span id="login-text">Masuk ke Ruang Diskusi</span>
+                
+                <button id="login-btn" type="submit" class="w-full btn-gold py-5 rounded-2xl uppercase tracking-[0.3em] text-xs flex items-center justify-center gap-3 transition-all">
+                    <span id="login-text">Aktifkan Intelligence</span>
                     <div id="login-loader" class="hidden w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
                 </button>
-                <p id="login-error" class="text-red-500 text-[9px] text-center font-bold uppercase mt-5 h-4"></p>
+                <p id="login-error" class="text-red-500 text-[10px] text-center font-bold uppercase mt-4 h-4"></p>
             </form>
-            <p class="mt-12 text-[8px] font-bold text-slate-700 tracking-[0.4em] uppercase">Intelligence For Market Leaders © 2026</p>
-        </div>
-    </div>
-
-    <!-- CONFLICT SCREEN -->
-    <div id="conflict-screen" class="fixed inset-0 z-[300] hidden flex items-center justify-center p-6 tutorial-overlay">
-        <div class="max-w-md w-full glass-panel rounded-[2.5rem] p-12 text-center border border-red-500/20 shadow-2xl">
-            <div class="w-24 h-24 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-8 border border-red-500/30">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v4"/><path d="M12 16h.01"/><path d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z"/></svg>
+            
+            <div class="mt-12 pt-8 border-t border-white/5 text-center">
+                <p class="text-white text-2xl tracking-[0.25em] font-black uppercase italic drop-shadow-xl">MADE BY PROSBE</p>
+                <p class="mt-3 text-[8px] font-bold text-slate-700 tracking-[0.4em] uppercase">Platinum Elite v6.8 Premium © 2026</p>
             </div>
-            <h2 class="text-3xl font-luxury text-white mb-4">Sesi Terputus</h2>
-            <p class="text-slate-400 text-sm leading-relaxed mb-10 text-shadow">
-                Akun ini sedang digunakan di perangkat lain. <br><br>
-                Sesi ini telah dinonaktifkan demi menjaga keamanan intelijen bisnis Bapak.
-            </p>
-            <button id="conflict-logout-btn" class="w-full py-5 rounded-2xl btn-gold uppercase tracking-[0.2em] text-xs transition-all shadow-xl">Kembali ke Login</button>
         </div>
     </div>
 
     <!-- TUTORIAL MODAL -->
-    <div id="tutorial-modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-6 tutorial-overlay">
-        <div class="max-w-md w-full glass-panel rounded-[2rem] p-8 border border-gold/20 shadow-2xl text-left">
-            <h3 class="text-xl font-luxury gold-gradient-text mb-6 text-center">Panduan Kunci AI</h3>
-            <div class="space-y-4 text-sm text-slate-300 leading-relaxed">
+    <div id="tutorial-modal" class="fixed inset-0 z-[1100] hidden flex items-center justify-center p-6 bg-black/95 backdrop-blur-xl">
+        <div class="max-w-md w-full bg-[#0d0d0d] rounded-[2.5rem] p-10 border border-gold/20 shadow-2xl">
+            <h3 class="text-2xl font-luxury gold-gradient-text mb-8 text-center">Panduan Kunci Intelijen</h3>
+            <div class="space-y-5 text-sm text-slate-300 leading-relaxed">
                 <div class="flex gap-4">
-                    <span class="w-6 h-6 rounded-full bg-gold/20 text-gold flex items-center justify-center text-[10px] font-bold shrink-0">1</span>
-                    <p>Buka <b>aistudio.google.com</b></p>
+                    <span class="w-7 h-7 rounded-full bg-gold/10 text-gold flex items-center justify-center text-[10px] font-black shrink-0 border border-gold/20">1</span>
+                    <p>Buka situs <b>aistudio.google.com</b></p>
                 </div>
                 <div class="flex gap-4">
-                    <span class="w-6 h-6 rounded-full bg-gold/20 text-gold flex items-center justify-center text-[10px] font-bold shrink-0">2</span>
-                    <p>Klik <b>"Get API Key"</b> di kiri layar.</p>
+                    <span class="w-7 h-7 rounded-full bg-gold/10 text-gold flex items-center justify-center text-[10px] font-black shrink-0 border border-gold/20">2</span>
+                    <p>Login Akun Google, klik tombol <b>"Get API Key"</b>.</p>
                 </div>
                 <div class="flex gap-4">
-                    <span class="w-6 h-6 rounded-full bg-gold/20 text-gold flex items-center justify-center text-[10px] font-bold shrink-0">3</span>
+                    <span class="w-7 h-7 rounded-full bg-gold/10 text-gold flex items-center justify-center text-[10px] font-black shrink-0 border border-gold/20">3</span>
                     <p>Pilih <b>"Create API Key in new project"</b>.</p>
                 </div>
                 <div class="flex gap-4">
-                    <span class="w-6 h-6 rounded-full bg-gold/20 text-gold flex items-center justify-center text-[10px] font-bold shrink-0">4</span>
-                    <p>Salin kodenya & tempel di kolom login tadi.</p>
+                    <span class="w-7 h-7 rounded-full bg-gold/10 text-gold flex items-center justify-center text-[10px] font-black shrink-0 border border-gold/20">4</span>
+                    <p>Salin kodenya & tempel di kolom login aplikasi.</p>
                 </div>
             </div>
-            <button onclick="window.toggleTutorial(false)" class="w-full mt-8 py-4 rounded-xl border border-gold/20 hover:bg-gold/10 text-gold text-xs font-bold uppercase transition-all tracking-widest text-shadow">Dimengerti, Pak!</button>
+            <button onclick="window.toggleTutorial(false)" class="w-full mt-10 py-5 rounded-2xl border border-gold/20 hover:bg-gold/10 text-gold text-xs font-black uppercase transition-all tracking-[0.2em]">Dimengerti, Pak!</button>
         </div>
     </div>
 
-    <!-- DASHBOARD UTAMA -->
-    <div id="main-app" class="hidden min-h-screen flex flex-col opacity-0 transition-opacity duration-1000">
-        <header class="h-20 border-b border-white/5 glass-panel flex items-center px-8 sticky top-0 z-[100]">
-            <div class="flex items-center gap-6 text-shadow">
-                <span class="text-3xl font-luxury gold-gradient-text tracking-tighter cursor-default">MarketMind</span>
-                <span class="h-4 w-px bg-white/10"></span>
-                <span class="text-[9px] font-bold text-slate-500 uppercase tracking-[0.3em] mt-1">v4.1 Platinum Final</span>
+    <!-- MAIN APP DASHBOARD -->
+    <div id="main-app" class="hidden h-screen flex flex-col opacity-0 transition-opacity duration-500 bg-[#02040a]">
+        <!-- HEADER -->
+        <header class="h-20 bg-black/80 backdrop-blur-md flex items-center px-10 border-b border-white/5 z-[100] shrink-0">
+            <div class="flex items-center gap-6">
+                <span class="text-3xl font-luxury gold-gradient-text tracking-tighter cursor-default font-bold italic">MarketMind</span>
+                <span class="h-5 w-px bg-white/10"></span>
+                <span class="text-[9px] font-bold text-slate-500 uppercase tracking-[0.3em]">Platinum Elite v6.8</span>
             </div>
-            <div class="ml-auto flex items-center gap-8 text-right">
-                <div class="hidden lg:flex flex-col items-end">
-                    <span class="text-[8px] font-bold text-slate-600 uppercase tracking-widest tracking-tighter">Verified CEO</span>
-                    <span id="user-email-display" class="text-[10px] font-bold text-slate-400 tracking-tight"></span>
-                </div>
-                <button id="logout-btn" class="px-6 py-2.5 rounded-xl border border-white/5 bg-white/5 hover:bg-red-500/10 hover:text-red-400 text-[9px] font-extrabold text-slate-500 transition-all uppercase tracking-widest">Logout</button>
+            <div class="ml-auto">
+                <button onclick="window.atomicLogout()" class="px-6 py-2.5 rounded-xl bg-red-600/10 border border-red-500/20 hover:bg-red-500/30 text-red-500 text-[10px] font-black transition-all uppercase tracking-widest">Logout & Hapus Kunci</button>
             </div>
         </header>
 
-        <div class="flex-1 flex flex-col lg:flex-row overflow-hidden">
-            <!-- SIDEBAR: BLUEPRINT -->
-            <aside class="w-full lg:w-80 bg-black/50 border-b lg:border-b-0 lg:border-r border-white/5 p-8 overflow-y-auto z-20 shadow-2xl text-shadow">
-                <div class="flex justify-between items-center mb-8">
-                    <h3 class="text-[10px] font-extrabold text-gold/80 uppercase tracking-[0.3em]">Business DNA</h3>
-                    <button id="reset-data-btn" class="text-[9px] font-bold text-slate-600 hover:text-red-400 uppercase transition-all tracking-tighter">Hapus Semua</button>
+        <!-- MAIN LAYOUT GRID -->
+        <div class="flex-1 flex overflow-hidden">
+            
+            <!-- LEFT SIDEBAR: DNA BLUEPRINT -->
+            <aside class="w-[340px] overflow-y-auto p-8 border-r border-white/5 bg-black/30 shrink-0">
+                <div class="flex justify-between items-center mb-10">
+                    <h3 class="text-[11px] font-black text-gold/80 uppercase tracking-[0.3em]">Blueprint DNA</h3>
+                    <button onclick="window.clearFormNow()" class="text-[9px] font-bold text-slate-600 hover:text-red-400 uppercase transition-all">Clear All</button>
                 </div>
-                <div class="space-y-6">
-                    <div class="space-y-1.5">
-                        <label class="text-[8px] font-bold text-slate-500 uppercase tracking-widest ml-1">Brand Bapak</label>
-                        <input type="text" id="brand-name" class="w-full rounded-xl px-4 py-3 text-sm" placeholder="Contoh: Brand X" autocomplete="off">
+                <div class="space-y-7">
+                    <div class="space-y-2">
+                        <label class="text-[9px] font-bold text-slate-500 uppercase tracking-widest ml-1">Brand Name</label>
+                        <input type="text" id="brand-name" class="w-full rounded-xl px-5 py-4 text-sm placeholder:text-slate-700" placeholder="Contoh: Brand X">
                     </div>
-                    <div class="space-y-1.5">
-                        <label class="text-[8px] font-bold text-slate-500 uppercase tracking-widest ml-1">Nama Produk</label>
-                        <input type="text" id="product-name" class="w-full rounded-xl px-4 py-3 text-sm" placeholder="Misal: Produk Utama" autocomplete="off">
-                    </div>
-                    <div class="space-y-1.5">
-                        <label class="text-[8px] font-bold text-slate-500 uppercase tracking-widest ml-1 text-gold/80">Bidang Bisnis</label>
-                        <select id="product-category" class="w-full rounded-xl px-4 py-3 text-xs cursor-pointer" onchange="window.toggleManualInput('product-category', 'manual-category')">
+                    <div class="space-y-2">
+                        <label class="text-[9px] font-bold text-slate-500 uppercase tracking-widest ml-1 text-gold/60">Category</label>
+                        <select id="product-category" class="w-full rounded-xl px-5 py-4 text-xs cursor-pointer" onchange="window.handleManualInput('product-category', 'manual-category-container')">
                             <option value="">Pilih Bidang...</option>
-                            <option value="F&B (Gourmet & FoodTech)">Kuliner & Minuman</option>
-                            <option value="SaaS & Digital Automation">Produk Digital / SaaS</option>
-                            <option value="Sustainable Fashion">Fashion & Gaya Hidup</option>
-                            <option value="Neuro-Cosmetics & Beauty">Kecantikan & Skincare</option>
-                            <option value="Biohacking & Wellness">Kesehatan / Biohacking</option>
-                            <option value="Professional Services">Jasa Konsultan / Agensi</option>
-                            <option value="Real Estate & Smart Living">Properti / Smart Living</option>
+                            <option value="Kuliner Modern (F&B)">Kuliner & Minuman</option>
+                            <option value="Teknologi Digital (SaaS)">Digital & Apps</option>
+                            <option value="Sustainable Fashion">Fashion</option>
+                            <option value="Wellness & Health">Kesehatan</option>
                             <option value="manual">-- Ketik Sendiri --</option>
                         </select>
-                        <input type="text" id="manual-category" class="hidden w-full rounded-xl px-4 py-3 text-sm mt-2" placeholder="Sektor Bapak apa?" autocomplete="off">
+                        <div id="manual-category-container" class="hidden mt-2">
+                            <input type="text" id="manual-category" class="w-full rounded-xl px-5 py-4 text-sm" placeholder="Sektor Bisnis Bapak?">
+                        </div>
                     </div>
-                    <div class="space-y-1.5">
-                        <label class="text-[8px] font-bold text-slate-500 uppercase tracking-widest ml-1">Gaya Brand</label>
-                        <select id="brand-voice" class="w-full rounded-xl px-4 py-3 text-xs cursor-pointer">
-                            <option value="Santai, Sahabat Karib, dan Humoris">Santai (Akrab)</option>
-                            <option value="Profesional, Berwibawa, dan Visioner">Visioner (Wibawa)</option>
-                            <option value="Misterius, Eksklusif, dan Mewah">Elite (Eksklusif)</option>
-                            <option value="Berani, Radikal, dan Tegas">Radikal (Agresif)</option>
-                            <option value="Empati, Hangat, dan Menenangkan">Zen (Empati)</option>
+                    <div class="space-y-2">
+                        <label class="text-[9px] font-bold text-slate-500 uppercase tracking-widest ml-1">Brand Voice</label>
+                        <select id="brand-voice" class="w-full rounded-xl px-5 py-4 text-xs cursor-pointer">
+                            <option value="Santai, Akrab, dan Humoris">Santai (Akrab)</option>
+                            <option value="Profesional, Berwibawa, Visioner">Wibawa (Visioner)</option>
+                            <option value="Elite, Eksklusif, dan Mewah">Elite (Mewah)</option>
+                            <option value="Berani, Tegas, dan Radikal">Berani (Agresif)</option>
                         </select>
                     </div>
-                    <div class="space-y-1.5">
-                        <label class="text-[8px] font-bold text-slate-500 uppercase tracking-widest ml-1">USP (Nilai Unik)*</label>
-                        <textarea id="product-features" rows="4" class="w-full rounded-xl px-4 py-3 text-xs resize-none" placeholder="Kenapa orang harus beli di Bapak?"></textarea>
-                    </div>
-                    <div class="flex gap-3">
-                        <div class="w-1/2 space-y-1.5">
-                            <label class="text-[8px] font-bold text-slate-500 uppercase tracking-widest">Pricing Tier</label>
-                            <select id="product-price" class="w-full rounded-xl px-3 py-3 text-[10px] cursor-pointer" onchange="window.toggleManualInput('product-price', 'manual-price')">
-                                <option value="">Pilih...</option>
-                                <option value="Mass / Economy">Ekonomis</option>
-                                <option value="Mid-Range">Menengah (Worth it)</option>
-                                <option value="Affordable Premium">Mewah Terjangkau</option>
-                                <option value="Luxury / Ultra-High">Eksklusif (Mahal)</option>
-                                <option value="manual">-- Manual --</option>
-                            </select>
-                        </div>
-                        <div class="w-1/2 space-y-1.5">
-                            <label class="text-[8px] font-bold text-slate-500 uppercase tracking-widest text-gold/80">Target Tribe</label>
-                            <select id="product-audience" class="w-full rounded-xl px-3 py-3 text-[10px] cursor-pointer" onchange="window.toggleManualInput('product-audience', 'manual-audience')">
-                                <option value="">Pilih...</option>
-                                <option value="Gen Alpha & Gen Z">Masa Depan (Alpha/Z)</option>
-                                <option value="Remote High-Income Nomads">Remote Professionals</option>
-                                <option value="Eco-Conscious Minimalists">Minimalis Hijau</option>
-                                <option value="Luxury Seekers">Pemburu Eksklusivitas</option>
-                                <option value="Small Business Owners">Pemilik UMKM Modern</option>
-                                <option value="manual">-- Manual --</option>
-                            </select>
+                    <div class="space-y-2">
+                        <label class="text-[9px] font-bold text-slate-500 uppercase tracking-widest ml-1">Target Tribe</label>
+                        <select id="product-audience" class="w-full rounded-xl px-5 py-4 text-xs cursor-pointer" onchange="window.handleManualInput('product-audience', 'manual-audience-container')">
+                            <option value="Gen Alpha & Z Modern">Masa Depan (Alpha/Z)</option>
+                            <option value="High-Income Executives">Executives</option>
+                            <option value="Digital Nomad Professionals">Remote Workers</option>
+                            <option value="manual">-- Ketik Sendiri --</option>
+                        </select>
+                        <div id="manual-audience-container" class="hidden mt-2">
+                            <input type="text" id="manual-audience" class="w-full rounded-xl px-5 py-4 text-sm" placeholder="Siapa target Bapak?">
                         </div>
                     </div>
-                    <input type="text" id="manual-price" class="hidden w-full rounded-xl px-4 py-3 text-sm mt-2" placeholder="Range harga Bapak berapa?">
-                    <input type="text" id="manual-audience" class="hidden w-full rounded-xl px-4 py-3 text-sm mt-2" placeholder="Siapa yang Bapak incar?">
+                    <div class="space-y-2">
+                        <label class="text-[9px] font-bold text-slate-500 uppercase tracking-widest ml-1">Level Harga</label>
+                        <select id="product-price" class="w-full rounded-xl px-5 py-4 text-xs cursor-pointer" onchange="window.handleManualInput('product-price', 'manual-price-container')">
+                            <option value="Economy">Ekonomis</option>
+                            <option value="Mid-Range">Menengah (Worth it)</option>
+                            <option value="Luxury Premium">Eksklusif (Sultan)</option>
+                            <option value="manual">-- Ketik Sendiri --</option>
+                        </select>
+                        <div id="manual-price-container" class="hidden mt-2">
+                            <input type="text" id="manual-price" class="w-full rounded-xl px-5 py-4 text-sm" placeholder="Range harga produk?">
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-[9px] font-bold text-slate-500 uppercase tracking-widest ml-1">USP (Nilai Unik)*</label>
+                        <textarea id="product-features" rows="5" class="w-full rounded-xl px-5 py-4 text-xs resize-none" placeholder="Apa nilai unik Bapak yang tidak punya kompetitor?"></textarea>
+                    </div>
                 </div>
             </aside>
 
-            <!-- WORKSPACE UTAMA -->
-            <main class="flex-1 p-8 overflow-y-auto bg-black relative z-10">
-                <div class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-4 mb-12" id="feature-grid"></div>
+            <!-- MIDDLE: WORKSPACE -->
+            <main class="flex-1 overflow-y-auto p-10 flex flex-col gap-12 bg-[#03050a]">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 shrink-0" id="feature-grid">
+                    <!-- Dinamis by JavaScript -->
+                </div>
 
-                <div id="result-panel" class="hidden glass-panel rounded-[3rem] overflow-hidden shadow-2xl border border-white/5 transition-all relative">
-                    <div class="px-10 py-7 border-b border-white/5 flex flex-col sm:flex-row justify-between items-center bg-white/[0.01] gap-4">
-                        <div class="flex items-center gap-4 text-shadow text-left">
-                            <div class="w-2.5 h-2.5 rounded-full bg-gold shadow-[0_0_15px_rgba(212,175,55,0.6)] animate-pulse"></div>
-                            <h2 id="res-title" class="text-sm font-extrabold text-white uppercase tracking-[0.4em]">Intelligence Discovery</h2>
+                <!-- RESULT PANEL -->
+                <div id="result-panel" class="hidden flex flex-col bg-[#050505] rounded-[3.5rem] border border-white/5 shadow-2xl overflow-hidden min-h-[700px] transition-all">
+                    <div class="px-10 py-8 border-b border-white/5 flex flex-col sm:flex-row justify-between items-center bg-white/[0.01] gap-6">
+                        <div class="flex items-center gap-5">
+                            <div class="w-3.5 h-3.5 rounded-full bg-gold shadow-[0_0_20px_rgba(212,175,55,0.7)] animate-pulse"></div>
+                            <h2 id="res-title" class="text-[14px] font-black text-white uppercase tracking-[0.4em]">Strategic Discovery</h2>
                         </div>
-                        <div class="flex items-center gap-4 w-full sm:w-auto">
-                            <button id="copy-btn" class="flex-1 sm:flex-none px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-[10px] font-bold uppercase border border-white/5 tracking-widest transition-all">Salin</button>
-                            <button id="pdf-btn" class="flex-1 sm:flex-none btn-gold px-8 py-3 rounded-xl text-[10px] uppercase shadow-2xl tracking-[0.2em]">Simpan PDF</button>
+                        <div class="flex gap-4">
+                            <button onclick="window.copyTextNow()" class="px-8 py-3.5 rounded-xl bg-white/5 hover:bg-white/10 text-[10px] font-black uppercase tracking-widest border border-white/10 transition-all">Salin Teks</button>
+                            <button onclick="window.exportPDFNow()" class="px-10 py-3.5 rounded-xl btn-gold text-[10px] uppercase tracking-[0.2em] shadow-xl">Ekspor PDF</button>
                         </div>
                     </div>
 
-                    <div id="res-loader" class="hidden p-32 flex flex-col items-center justify-center text-center">
-                        <div class="spinner-luxury mb-10"></div>
-                        <p class="text-[11px] font-extrabold text-gold/60 uppercase tracking-[0.6em] animate-pulse">Menghitung Strategi Eksekutif...</p>
+                    <div id="res-loader" class="hidden py-40 flex-1 flex flex-col items-center justify-center text-center">
+                        <div class="spinner-luxury mb-8"></div>
+                        <p class="text-[11px] font-black text-gold/40 uppercase tracking-[0.8em] animate-pulse">Connecting Intelligence Cloud...</p>
                     </div>
 
-                    <div id="res-content-wrapper" class="p-12 md:p-20 relative bg-gradient-to-b from-transparent to-[#050505] min-h-[600px]">
-                        <div id="watermark" class="watermark font-luxury opacity-[0.02] select-none text-center">CONFIDENTIAL</div>
+                    <div id="res-content-area" class="p-12 sm:p-24 relative bg-gradient-to-b from-transparent to-black overflow-y-auto">
                         <div id="pdf-render">
-                            <div class="pdf-page-header">
-                                <div class="flex justify-between items-end text-shadow">
+                            <div id="pdf-header" class="hidden border-b border-gray-300 pb-8 mb-10">
+                                <div class="flex justify-between items-end">
                                     <div>
-                                        <h1 class="text-4xl font-luxury text-slate-900 tracking-tighter uppercase text-left">MarketMind Advisory</h1>
-                                        <p class="text-[10px] font-extrabold text-slate-500 tracking-[0.5em] uppercase mt-3 text-left">Executive Strategic Report | Final Edition</p>
+                                        <h1 class="text-3xl font-luxury text-slate-900 uppercase">MarketMind Strategic Intel</h1>
+                                        <p class="text-[10px] font-black text-slate-400 tracking-[0.5em] uppercase mt-2">Executive Audit Report 2026</p>
                                     </div>
-                                    <p id="pdf-date" class="text-[10px] font-bold text-slate-400"></p>
+                                    <p id="pdf-date" class="text-[10px] font-bold text-slate-500 uppercase"></p>
                                 </div>
                             </div>
                             <div id="res-body"></div>
@@ -344,300 +270,268 @@
                     </div>
                 </div>
 
-                <div id="empty-state" class="flex flex-col items-center justify-center py-40 text-center">
-                    <div class="w-32 h-32 mb-12 bg-gold/5 rounded-full flex items-center justify-center border border-gold/10 shadow-inner relative text-shadow">
+                <!-- EMPTY STATE -->
+                <div id="empty-state" class="flex-1 flex flex-col items-center justify-center py-20 text-center">
+                    <div class="w-36 h-36 mb-12 bg-gold/5 rounded-full flex items-center justify-center border border-gold/10 relative">
                         <div class="absolute inset-0 rounded-full border border-gold/20 animate-ping opacity-10"></div>
                         <span class="text-7xl">💎</span>
                     </div>
-                    <h2 class="text-4xl font-luxury gold-gradient-text mb-6 tracking-tight">Halo Pak CEO!</h2>
-                    <p class="text-slate-500 text-base max-w-lg font-medium leading-relaxed tracking-wide">Command Center siap. Pilih dimensi analisa di atas untuk membongkar intelijen pasar Bapak.</p>
+                    <h2 class="text-5xl font-luxury gold-gradient-text mb-6 italic tracking-tighter">Strategi Dimulai di Sini</h2>
+                    <p class="text-slate-500 max-w-2xl text-lg leading-relaxed mx-auto text-justified opacity-80">Lakukan pengaturan Blueprint DNA di samping, lalu pilih dimensi riset untuk memulai perancangan strategi Bapak.</p>
                 </div>
             </main>
 
-            <aside class="w-64 border-l border-white/5 bg-black p-8 hidden xl:block shadow-2xl overflow-y-auto z-20 text-shadow text-left">
-                <h3 class="text-[9px] font-extrabold text-slate-600 uppercase tracking-[0.5em] mb-10 border-b border-white/5 pb-3">Session Log</h3>
-                <div id="history-list" class="space-y-6"></div>
+            <!-- RIGHT SIDEBAR: SESSION LOG -->
+            <aside class="w-[300px] overflow-y-auto p-8 border-l border-white/5 bg-black hidden lg:block shrink-0">
+                <h3 class="text-[10px] font-black text-slate-600 uppercase tracking-[0.5em] mb-10 pb-3 border-b border-white/5">Intelligence History</h3>
+                <div id="history-list" class="space-y-5"></div>
             </aside>
+
         </div>
     </div>
 
     <!-- TOAST -->
-    <div id="toast" class="fixed bottom-12 left-1/2 -translate-x-1/2 glass-panel px-10 py-5 rounded-2xl border border-gold/30 text-[10px] font-extrabold uppercase tracking-[0.4em] text-gold hidden z-[400] shadow-2xl animate-bounce text-center text-shadow"></div>
+    <div id="toast" class="fixed bottom-12 left-1/2 -translate-x-1/2 bg-[#0a0a0a] px-12 py-5 rounded-3xl border border-gold/30 text-[11px] font-black uppercase tracking-[0.5em] text-gold hidden z-[2000] shadow-2xl animate-bounce"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+    <script>
+        const STORE_KEY = 'marketmind_intel_key_v68_final';
+        let state = { apiKey: localStorage.getItem(STORE_KEY) || '', history: [], result: '' };
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyBU6nMB05Oe_g5U4_EvAAihbH4gWczYsPk",
-            authDomain: "marketmind-a492e.firebaseapp.com",
-            projectId: "marketmind-a492e",
-            storageBucket: "marketmind-a492e.firebasestorage.app",
-            messagingSenderId: "101258590892",
-            appId: "1:101258590892:web:1015492fbc496cdd7f7d09"
-        };
+        const FEATURES = [
+            { id: 'market', title: 'Peta Tribe', icon: '🎯', desc: 'Analisa segmentasi pasar visi 2026. Membongkar perilaku psikologis pelanggan yang rela membayar mahal.' },
+            { id: 'comp', title: 'Intip Lawan', icon: '👁️', desc: 'Audit pertahanan kompetitor. Menemukan celah agar Bapak bisa penetrasi pasar dengan cara elegan.' },
+            { id: 'niche', title: 'Cuan Baru', icon: '💎', desc: 'Cari ceruk pasar (Niche) yang masih sepi pesaing namun memiliki perputaran uang yang tinggi.' },
+            { id: 'swot', title: 'Cek Ombal', icon: '⚔️', desc: 'Analisa kekuatan & kelemahan brand. Memberikan 5 aksi nyata yang bisa Bapak lakukan besok pagi.' },
+            { id: 'content', title: 'Ide Jualan', icon: '💡', desc: 'Jadwal konten viral 7 hari. Membuat promosi Bapak tidak membosankan dengan Hook yang mematikan.' },
+            { id: 'seo', title: 'Biar Ketemu', icon: '🔍', desc: 'Audit Kata Kunci & Hashtag 2026 agar brand Bapak muncul di baris terdepan mesin pencarian.' },
+            { id: 'ads', title: 'Iklan Cuan', icon: '📣', desc: 'Copywriting iklan mematikan. Kata-kata yang menstimulasi rasa butuh pelanggan seketika.' }
+        ];
 
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-        const KEY_STORE = 'marketmind_pro_key';
-        const SESSION_KEY = 'copygen_session_id';
-        const appId = "marketmind-v4-1";
-
-        const state = {
-            apiKey: localStorage.getItem(KEY_STORE) || '',
-            result: '',
-            history: []
-        };
-
-        const dom = {
-            login: document.getElementById('login-screen'),
-            app: document.getElementById('main-app'),
-            loginForm: document.getElementById('login-form'),
-            loginEmail: document.getElementById('login-email'),
-            loginPass: document.getElementById('login-password'),
-            apiKeyIn: document.getElementById('api-key-input'),
-            delKeyBtn: document.getElementById('delete-api-btn'),
-            loginErr: document.getElementById('login-error'),
-            loginLoad: document.getElementById('login-loader'),
-            loginTxt: document.getElementById('login-text'),
-            userDisp: document.getElementById('user-email-display'),
-            featureGrid: document.getElementById('feature-grid'),
-            resPanel: document.getElementById('result-panel'),
-            resTitle: document.getElementById('res-title'),
-            resLoad: document.getElementById('res-loader'),
-            resBody: document.getElementById('res-body'),
-            empty: document.getElementById('empty-state'),
-            watermark: document.getElementById('watermark'),
-            histList: document.getElementById('history-list'),
-            pdfBtn: document.getElementById('pdf-btn'),
-            copyBtn: document.getElementById('copy-btn'),
-            resetBtn: document.getElementById('reset-data-btn'),
-            toast: document.getElementById('toast'),
-            tutorial: document.getElementById('tutorial-modal'),
-            conflict: document.getElementById('conflict-screen'),
-            conflictLogout: document.getElementById('conflict-logout-btn'),
-            brand: document.getElementById('brand-name'),
-            pName: document.getElementById('product-name'),
-            pCat: document.getElementById('product-category'),
-            pManualCat: document.getElementById('manual-category'),
-            pVoice: document.getElementById('brand-voice'),
-            pUSP: document.getElementById('product-features'),
-            pAud: document.getElementById('product-audience'),
-            pManualAud: document.getElementById('manual-audience'),
-            pPrice: document.getElementById('product-price'),
-            pManualPrice: document.getElementById('manual-price')
-        };
-
-        const FEATURES = {
-            'market': { title: 'Peta Tribe', icon: '🎯', desc: 'Analisa siapa pembeli yang rela keluar uang buat Bapak? Kita bongkar perilakunya.', prompt: 'Analisa segmentasi pasar (STP) visi 2026. Jelaskan tribes mana yang paling relevan. Gunakan bahasa santai. WAJIB kasih 5 opsi contoh riil pembelinya lagi ngapain.' },
-            'comp': { title: 'Intip Lawan', icon: '👁️', desc: 'Bongkar lubang di bisnis kompetitor biar Bapak bisa nikung dengan elegan.', prompt: 'Analisa kompetitor. Bongkar lubang di bisnis mereka. Kasih 5 ide konkrit cara nikung pelanggan mereka dengan cara asik di tahun 2026.' },
-            'niche': { title: 'Cuan Baru', icon: '💎', desc: 'Cari ceruk pasar sepi pesaing tapi duitnya kenceng di tahun 2026.', prompt: 'Cari 3 ceruk pasar (Niche) unik 2026. Kasih 3 contoh ide promosi spesifik buat masing-masing ceruk agar Bapak punya pilihan.' },
-            'swot': { title: 'Cek Ombal', icon: '⚔️', desc: 'Jujur-jujuran soal kekuatan & kelemahan brand Bapak biar gak gampang ambruk.', prompt: 'Buat analisa SWOT. Jelaskan pake perumpamaan sehari-hari. Kasih minimal 5 aksi nyata yang bisa Bapak lakuin besok pagi.' },
-            'persona': { title: 'Kenalan Yuk', icon: '👥', desc: 'Bikin profil fiktif pembeli biar Bapak tau cara ngobrol sama mereka.', prompt: 'Bikin 2 profil orang fiktif. Ceritain masalah emosional hidup mereka dan gimana produk Bapak hadir.' },
-            'content': { title: 'Ide Jualan', icon: '💡', desc: 'Jadwal konten 7 hari biar postingan Bapak gak ngebosenin.', prompt: 'Bikin jadwal konten viral 7 hari. Kasih judul yang menarik, isi kontennya apa, dan Hook-nya. Kasih 3 gaya konten berbeda sebagai pilihan.' },
-            'seo': { title: 'Biar Ketemu', icon: '🔍', desc: 'Bikin brand Bapak gampang nemuin pembeli di mana-mana.', prompt: 'Cariin 15 kata kunci & 20 hashtag paling viral 2026. Kasih 3 contoh caption siap pakai yang gampang dicontek.' },
-            'email': { title: 'Surat Cinta', icon: '✉️', desc: 'Cara ngobrol personal lewat pesan biar orang ngerasa spesial.', prompt: 'Tulis 3 variasi pesan penawaran. Satu gaya cerita, satu gaya hadiah, satu gaya to-the-point.' },
-            'ads': { title: 'Iklan Cuan', icon: '📣', desc: 'Kata-kata iklan yang bikin orang langsung pengen klik beli.', prompt: 'Bikin 5 variasi teks iklan. Gunakan teknik psikologi 2026 tapi bahasanya ramah. Jelaskan kenapa Bapak pake kata-kata itu.' },
-            'trends': { title: 'Lagi Rame Apa?', icon: '📈', desc: 'Tren mikro industri yang lagi anget sekarang buat numpang viral.', prompt: 'Lacak 5 tren mikro terbaru 2026. Kasih 5 cara numpang viral (trend-jacking) yang cerdik tanpa kelihatan maksa.' }
-        };
-
-        window.toggleTutorial = (show) => { dom.tutorial.classList.toggle('hidden', !show); };
-        window.toggleManualInput = (selectId, manualId) => {
-            const selectEl = document.getElementById(selectId);
-            const manualEl = document.getElementById(manualId);
-            if (selectEl.value === 'manual') { manualEl.classList.remove('hidden'); manualEl.focus(); } else { manualEl.classList.add('hidden'); }
-        };
-
-        const showToast = (msg) => {
-            dom.toast.textContent = msg; dom.toast.classList.remove('hidden');
-            setTimeout(() => dom.toast.classList.add('hidden'), 3500);
-        };
-
-        const updateApiUI = () => {
-            if (state.apiKey) { dom.apiKeyIn.placeholder = "Kunci Terenkripsi Aktif"; dom.delKeyBtn.classList.remove('hidden'); } 
-            else { dom.apiKeyIn.placeholder = "Tempel kunci AI di sini"; dom.delKeyBtn.classList.add('hidden'); }
-        };
-
-        const clearAllDataPermanent = () => {
-            state.apiKey = ''; state.result = ''; state.history = [];
-            dom.brand.value = ''; dom.pName.value = ''; dom.pCat.value = '';
-            dom.pUSP.value = ''; dom.pAud.value = ''; dom.pPrice.value = '';
-            dom.pManualCat.value = ''; dom.pManualAud.value = ''; dom.pManualPrice.value = '';
-            dom.pManualCat.classList.add('hidden'); dom.pManualAud.classList.add('hidden'); dom.pManualPrice.classList.add('hidden');
-            dom.pVoice.selectedIndex = 0; dom.pCat.selectedIndex = 0; dom.pPrice.selectedIndex = 0; dom.pAud.selectedIndex = 0;
-            dom.loginEmail.value = ''; dom.loginPass.value = ''; dom.apiKeyIn.value = '';
-            localStorage.removeItem(KEY_STORE);
-            localStorage.removeItem(SESSION_KEY);
-            dom.resPanel.classList.add('hidden');
-            dom.empty.classList.remove('hidden');
-            dom.histList.innerHTML = '';
-        };
-
-        // MONITOR SESI REAL-TIME
-        let unsubSessionGlobal = null;
-        onAuthStateChanged(auth, (currentUser) => {
-            if (currentUser) {
-                const localSessionId = localStorage.getItem(SESSION_KEY);
-                const sessionRef = doc(db, 'artifacts', appId, 'users', currentUser.uid, 'session', 'current');
-                if (unsubSessionGlobal) unsubSessionGlobal();
-                unsubSessionGlobal = onSnapshot(sessionRef, (snap) => {
-                    if (snap.exists()) {
-                        const serverSessionId = snap.data().sessionId;
-                        if (localSessionId && serverSessionId !== localSessionId) {
-                            dom.conflict.classList.remove('hidden');
-                            dom.app.classList.add('blur-xl', 'pointer-events-none');
-                        }
-                    }
-                });
-                dom.login.classList.add('opacity-0', 'pointer-events-none');
-                setTimeout(() => {
-                    dom.login.classList.add('hidden');
-                    dom.app.classList.remove('hidden');
-                    dom.app.classList.add('opacity-100');
-                    dom.userDisp.textContent = currentUser.email;
-                    
-                    // PERBAIKAN: Reset tombol login saat masuk dashboard
-                    dom.loginLoad.classList.add('hidden');
-                    dom.loginTxt.classList.remove('hidden');
-                    
-                    updateApiUI();
-                }, 500);
-            } else {
-                if (unsubSessionGlobal) unsubSessionGlobal();
-                dom.app.classList.remove('opacity-100');
-                dom.app.classList.add('hidden');
-                dom.login.classList.remove('hidden', 'opacity-0', 'pointer-events-none');
-                
-                // PERBAIKAN: Pastikan tombol login normal kembali saat logout
-                dom.loginLoad.classList.add('hidden');
-                dom.loginTxt.classList.remove('hidden');
-                
-                clearAllDataPermanent();
-            }
-        });
-
-        dom.loginForm.onsubmit = async (e) => {
-            e.preventDefault();
-            const email = dom.loginEmail.value;
-            const password = dom.loginPass.value;
-            const key = dom.apiKeyIn.value.trim();
-            dom.loginLoad.classList.remove('hidden');
-            dom.loginTxt.classList.add('hidden');
-            dom.loginErr.textContent = '';
-            try {
-                if (key) {
-                    const validRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${key}`);
-                    if (!validRes.ok) throw new Error("Kunci AI Salah");
-                    localStorage.setItem(KEY_STORE, key);
-                    state.apiKey = key;
-                } else if (!localStorage.getItem(KEY_STORE)) {
-                    throw new Error("Kunci AI Diperlukan");
-                }
-                const cred = await signInWithEmailAndPassword(auth, email, password);
-                const newSessionId = crypto.randomUUID();
-                localStorage.setItem(SESSION_KEY, newSessionId);
-                const sessionRef = doc(db, 'artifacts', appId, 'users', cred.user.uid, 'session', 'current');
-                await setDoc(sessionRef, { sessionId: newSessionId, lastActive: Date.now(), deviceName: navigator.userAgent.substring(0, 50) });
-            } catch (err) {
-                dom.loginErr.textContent = err.message.toUpperCase();
-                dom.loginLoad.classList.add('hidden');
-                dom.loginTxt.classList.remove('hidden');
-            }
-        };
-
-        dom.conflictLogout.onclick = () => { signOut(auth).then(() => { dom.conflict.classList.add('hidden'); window.location.reload(); }); };
-        dom.delKeyBtn.onclick = () => { if (confirm("Hapus kunci AI?")) { localStorage.removeItem(KEY_STORE); state.apiKey = ''; dom.apiKeyIn.placeholder = "Tempel kunci AI di sini"; dom.delKeyBtn.classList.add('hidden'); dom.apiKeyIn.value = ''; updateApiUI(); showToast("KUNCI AI DIHAPUS"); } };
-        dom.resetBtn.onclick = (e) => { e.preventDefault(); if(confirm("Bapak yakin mau hapus semua data dan riwayat projek secara permanen?")) { clearAllDataPermanent(); showToast("DATA DIBERSIHKAN PAK!"); } };
-        document.getElementById('logout-btn').onclick = () => signOut(auth);
-
-        const renderFeatures = () => {
-            dom.featureGrid.innerHTML = Object.entries(FEATURES).map(([id, data]) => `
-                <div class="relative group info-trigger-area">
-                    <button onclick="window.runAnalysis('${id}')" class="w-full btn-luxury p-7 rounded-[2rem] flex flex-col items-start gap-1 transition-all relative text-left">
-                        <span class="text-3xl group-hover:scale-125 transition-all mb-3 text-shadow">${data.icon}</span>
-                        <span class="text-[10px] font-extrabold uppercase tracking-widest text-slate-300 text-shadow text-left">${data.title}</span>
-                    </button>
-                    <div class="absolute top-5 right-5 flex items-center justify-center w-5 h-5 rounded-full border border-gold/30 text-[10px] text-gold/60 cursor-help hover:bg-gold/10 hover:text-gold transition-all z-[110]">
-                        i
-                        <div class="info-tooltip">
-                            <p class="font-bold text-gold uppercase mb-2 tracking-[0.2em] border-b border-white/10 pb-1 text-left">${data.title}</p>
-                            <p class="text-slate-300 normal-case font-medium leading-relaxed">${data.desc}</p>
-                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 border-[8px] border-transparent border-b-black"></div>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        };
-
-        window.runAnalysis = async (fid) => {
-            const usp = dom.pUSP.value.trim();
-            if (!usp) { showToast("ISI BLUEPRINT DULU PAK!"); dom.pUSP.classList.add('ring-2', 'ring-red-500'); dom.pUSP.focus(); setTimeout(() => dom.pUSP.classList.remove('ring-2', 'ring-red-500'), 2500); return; }
-            let fCat = dom.pCat.value === 'manual' ? dom.pManualCat.value : dom.pCat.value;
-            let fAud = dom.pAud.value === 'manual' ? dom.pManualAud.value : dom.pAud.value;
-            let fPrice = dom.pPrice.value === 'manual' ? dom.pManualPrice.value : dom.pPrice.value;
-            const meta = { brand: dom.brand.value || "Bisnis Bapak", name: dom.pName.value, cat: fCat || "Pasar", voice: dom.pVoice.value, aud: fAud || "Konsumen", price: fPrice || "Custom" };
-            dom.empty.classList.add('hidden'); dom.resPanel.classList.remove('hidden');
-            dom.resTitle.textContent = `${FEATURES[fid].title} | ${meta.brand}`;
-            dom.resLoad.classList.remove('hidden'); dom.resBody.innerHTML = '';
-            dom.resPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-            const sys = `Kamu adalah Senior Marketing Strategist Sahabat CEO. 
-            GAYA: Super simpel, santai, asik. Hindari bahasa ribet. Pakai analogi keseharian.
-            KEWAJIBAN: 
-            1. Tiap poin WAJIB kasih minimal 3-5 CONTOH RIIL yang sangat spesifik. 
-            2. DI AKHIR LAPORAN, WAJIB BERIKAN BAGIAN:
-               - **"🚀 RANGKUMAN STRATEGI"**: Intisari dari apa yang harus Bapak lakukan pertama kali.
-               - **"✅ DAMPAK POSITIF"**: Jelaskan secara gamblang keuntungan nyata apa yang akan Bapak dapat jika strategi ini dijalankan.
-            TUJUAN: Agar Bapak yakin, percaya diri, dan langsung tahu apa hasil akhirnya.
-            TARGET: Siap praktek hari ini. FORMAT: Markdown mewah.`;
+        // --- ATOMIC ACTIONS (Gercep & Clean) ---
+        window.atomicLogout = function() {
+            localStorage.removeItem(STORE_KEY);
+            state.apiKey = '';
+            state.history = [];
+            state.result = '';
             
-            const user = `UNIT: ${meta.name} (${meta.cat}). BRAND: ${meta.brand}. USP: ${usp}. TARGET: ${meta.aud}. HARGA: ${meta.price}. TUGAS: ${FEATURES[fid].prompt}`;
+            document.getElementById('main-app').style.display = 'none';
+            document.getElementById('main-app').classList.remove('opacity-100');
+            
+            const login = document.getElementById('login-screen');
+            login.style.display = 'flex';
+            login.classList.remove('hidden');
+            login.classList.remove('opacity-0');
+            
+            document.getElementById('api-key-input').value = '';
+            document.getElementById('login-text').classList.remove('hidden');
+            document.getElementById('login-loader').classList.add('hidden');
+            document.getElementById('login-error').textContent = '';
+            document.getElementById('history-list').innerHTML = '';
+            document.getElementById('result-panel').classList.add('hidden');
+            document.getElementById('res-body').innerHTML = '';
+            document.getElementById('empty-state').classList.remove('hidden');
+        };
+
+        // --- LOGIKA INJEKSI USER: Switch Key UI ---
+        window.triggerSwitchKeyUI = function() {
+            // Kita bawa user balik ke login tapi tidak confirm konfirmasi agar gercep
+            localStorage.removeItem(STORE_KEY);
+            state.apiKey = '';
+            
+            document.getElementById('main-app').style.display = 'none';
+            document.getElementById('main-app').classList.remove('opacity-100');
+            
+            const login = document.getElementById('login-screen');
+            login.style.display = 'flex';
+            login.classList.remove('hidden');
+            login.classList.remove('opacity-0');
+            
+            document.getElementById('api-key-input').value = '';
+            document.getElementById('api-key-input').focus();
+            document.getElementById('login-text').classList.remove('hidden');
+            document.getElementById('login-loader').classList.add('hidden');
+            document.getElementById('login-error').textContent = "KUOTA KEY SEBELUMNYA HABIS. SILAKAN INPUT KEY BARU.";
+        };
+
+        window.clearFormNow = function() {
+            document.querySelectorAll('#brand-name, #product-features, #manual-category, #manual-audience, #manual-price').forEach(el => el.value = '');
+            document.querySelectorAll('select').forEach(el => el.selectedIndex = 0);
+            document.getElementById('result-panel').classList.add('hidden');
+            document.getElementById('empty-state').classList.remove('hidden');
+            window.showToast("DIBERSIHKAN PAK!");
+        };
+
+        window.handleManualInput = (selectId, containerId) => {
+            const selectEl = document.getElementById(selectId);
+            const container = document.getElementById(containerId);
+            selectEl.value === 'manual' ? container.classList.remove('hidden') : container.classList.add('hidden');
+        };
+
+        window.toggleTutorial = (show) => document.getElementById('tutorial-modal').classList.toggle('hidden', !show);
+        
+        window.showToast = (msg) => {
+            const t = document.getElementById('toast');
+            t.textContent = msg; t.classList.remove('hidden');
+            setTimeout(() => t.classList.add('hidden'), 4000);
+        };
+
+        // --- CORE ENGINE ---
+        async function validateAPIKey(key) {
+            try {
+                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${key}`);
+                return res.ok;
+            } catch { return false; }
+        }
+
+        function enterDashboard() {
+            const login = document.getElementById('login-screen');
+            const app = document.getElementById('main-app');
+            login.classList.add('opacity-0');
+            setTimeout(() => {
+                login.classList.add('hidden');
+                login.style.display = 'none';
+                app.style.display = 'flex';
+                app.classList.remove('hidden');
+                setTimeout(() => app.classList.add('opacity-100'), 50);
+                renderFeatureGrid();
+            }, 300);
+        }
+
+        document.getElementById('login-form').onsubmit = async (e) => {
+            e.preventDefault();
+            const key = document.getElementById('api-key-input').value.trim();
+            const txt = document.getElementById('login-text');
+            const lod = document.getElementById('login-loader');
+            const err = document.getElementById('login-error');
+
+            txt.classList.add('hidden'); lod.classList.remove('hidden');
+            err.textContent = '';
 
             try {
+                if (await validateAPIKey(key)) {
+                    state.apiKey = key;
+                    localStorage.setItem(STORE_KEY, key);
+                    enterDashboard();
+                } else {
+                    err.textContent = "KUNCI INVALID / EXPIRED!";
+                }
+            } catch {
+                err.textContent = "KONEKSI BERMASALAH!";
+            } finally {
+                if(!localStorage.getItem(STORE_KEY)) {
+                    txt.classList.remove('hidden'); 
+                    lod.classList.add('hidden');
+                }
+            }
+        };
+
+        function renderFeatureGrid() {
+            document.getElementById('feature-grid').innerHTML = FEATURES.map(f => `
+                <button onclick="window.runAnalysis('${f.id}')" class="card-feature p-8 rounded-[2.5rem] flex flex-col items-start gap-4">
+                    <div class="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-3xl shadow-inner border border-white/5">
+                        ${f.icon}
+                    </div>
+                    <div class="space-y-2">
+                        <span class="text-[12px] font-black uppercase tracking-[0.2em] text-gold/90">${f.title}</span>
+                        <p class="text-[11px] text-slate-400 font-medium leading-relaxed text-justified opacity-70">${f.desc}</p>
+                    </div>
+                </button>
+            `).join('');
+        }
+
+        // --- INJEKSI KODE USER: LOGIKA FETCH GEMINI DENGAN HANDLE STATUS 429 ---
+        window.runAnalysis = async (id) => {
+            const usp = document.getElementById('product-features').value.trim();
+            if(!usp) { window.showToast("ISI BLUEPRINT DNA!"); return; }
+
+            document.getElementById('empty-state').classList.add('hidden');
+            document.getElementById('result-panel').classList.remove('hidden');
+            document.getElementById('res-loader').classList.remove('hidden');
+            document.getElementById('res-body').innerHTML = '';
+            document.getElementById('result-panel').scrollIntoView({ behavior: 'smooth' });
+
+            const feature = FEATURES.find(f => f.id === id);
+            document.getElementById('res-title').textContent = `${feature.title} | ${document.getElementById('brand-name').value || 'Project'}`;
+
+            const category = document.getElementById('product-category').value === 'manual' ? document.getElementById('manual-category').value : document.getElementById('product-category').value;
+            const audience = document.getElementById('product-audience').value === 'manual' ? document.getElementById('manual-audience').value : document.getElementById('product-audience').value;
+            const price = document.getElementById('product-price').value === 'manual' ? document.getElementById('manual-price').value : document.getElementById('product-price').value;
+
+            const sys = `Kamu Senior Strategist ProSbe. GAYA: Santai, Elit, Profesional. Teks WAJIB Rata Kanan-Kiri (Justified).
+            WAJIB HASILKAN: 1. Analisa Strategis Mendalam. 2. Contoh Langkah Praktis Riil. 3. RANGKUMAN STRATEGI. 4. DAMPAK POSITIF.
+            FORMAT: Markdown Mewah. Teks Justified. Tanpa simbol aneh.`;
+            
+            const promptContent = `BRAND: ${document.getElementById('brand-name').value}. SEKTOR: ${category}. GAYA: ${document.getElementById('brand-voice').value}. USP: ${usp}. TARGET: ${audience}. HARGA: ${price}. TUGAS: ${feature.desc}`;
+
+            try {
+                // --- INJEKSI START ---
                 const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${state.apiKey}`;
-                const body = { contents: [{ parts: [{ text: user }] }], systemInstruction: { parts: [{ text: sys }] }, generationConfig: { temperature: 0.85 } };
-                const res = await fetch(url, { method: 'POST', body: JSON.stringify(body) });
-                const json = await res.json();
-                if (!res.ok) throw new Error(json.error?.message);
+                const response = await fetch(url, { 
+                    method: 'POST', 
+                    body: JSON.stringify({ 
+                        contents: [{ parts: [{ text: promptContent }] }], 
+                        systemInstruction: { parts: [{ text: sys }] } 
+                    }) 
+                });
+
+                if (response.status === 429) {
+                    window.showToast("KUOTA KEY HABIS! Silakan ganti dengan API Key cadangan.");
+                    window.triggerSwitchKeyUI(); 
+                    return;
+                }
+                
+                if(!response.ok) throw new Error("API Connection Error");
+                
+                const json = await response.json();
                 const text = json.candidates[0].content.parts[0].text;
-                state.result = text; dom.resBody.innerHTML = marked.parse(text);
-                const hItem = { fid, brand: meta.brand, time: new Date().toLocaleTimeString(), text };
-                state.history.unshift(hItem); if (state.history.length > 25) state.history.pop();
-                dom.histList.innerHTML = state.history.map((h, i) => `
-                    <div onclick="window.loadHist(${i})" class="p-5 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-gold/40 cursor-pointer transition-all">
-                        <p class="text-[8px] font-extrabold text-gold uppercase mb-1 tracking-[0.2em]">${FEATURES[h.fid].title}</p>
-                        <p class="text-[11px] font-bold text-slate-400 truncate">${h.brand}</p>
-                        <p class="text-[7px] text-slate-600 mt-2 uppercase tracking-widest">${h.time}</p>
+                // --- INJEKSI END ---
+                
+                state.result = text;
+                document.getElementById('res-body').innerHTML = marked.parse(text);
+                
+                const h = { title: feature.title, time: new Date().toLocaleTimeString(), text };
+                state.history.unshift(h);
+                document.getElementById('history-list').innerHTML = state.history.map((item, idx) => `
+                    <div onclick="window.loadHist(${idx})" class="p-5 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-gold/30 cursor-pointer transition-all">
+                        <p class="text-[10px] font-black text-gold uppercase mb-1">${item.title}</p>
+                        <p class="text-[7px] text-slate-600 uppercase tracking-widest">${item.time}</p>
                     </div>
                 `).join('');
-            } catch (err) { dom.resBody.innerHTML = `<div class="p-8 text-red-500 text-center font-bold text-xs uppercase tracking-widest text-shadow">Gagal Pak: ${err.message}</div>`; } finally { dom.resLoad.classList.add('hidden'); }
+            } catch {
+                document.getElementById('res-body').innerHTML = `<p class="text-red-500 font-bold p-10 text-center uppercase">Error: Gagal Terhubung ke Intelligence Cloud.</p>`;
+            } finally {
+                document.getElementById('res-loader').classList.add('hidden');
+            }
         };
 
         window.loadHist = (i) => {
             const h = state.history[i];
-            dom.resTitle.textContent = `${FEATURES[h.fid].title} (Arsip)`;
-            dom.resBody.innerHTML = marked.parse(h.text);
-            state.result = h.text; dom.resPanel.classList.remove('hidden');
-            dom.empty.classList.add('hidden'); dom.resPanel.scrollIntoView({ behavior: 'smooth' });
+            state.result = h.text;
+            document.getElementById('res-body').innerHTML = marked.parse(h.text);
+            document.getElementById('result-panel').classList.remove('hidden');
+            document.getElementById('empty-state').classList.add('hidden');
+            document.getElementById('result-panel').scrollIntoView({ behavior: 'smooth' });
         };
 
-        dom.pdfBtn.onclick = () => {
-            if (!state.result) return;
-            const bName = dom.brand.value || "Laporan_CEO";
-            dom.watermark.textContent = bName; dom.watermark.classList.remove('hidden');
+        window.copyTextNow = () => { if(state.result) { navigator.clipboard.writeText(state.result).then(() => window.showToast("STRATEGI DISALIN!")); } };
+
+        window.exportPDFNow = () => {
+            const el = document.getElementById('pdf-render');
+            const head = document.getElementById('pdf-header');
             document.getElementById('pdf-date').textContent = new Date().toLocaleDateString('id-ID', { dateStyle: 'full' });
-            const head = document.querySelector('.pdf-page-header'); head.style.display = 'block';
-            const originalColor = dom.resBody.style.color; dom.resBody.style.color = '#000';
-            const opt = { margin: 15, filename: `MARKETMIND_REPORT_${bName.replace(/\s+/g, '_')}.pdf`, html2canvas: { scale: 2.5 }, jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' } };
-            html2pdf().set(opt).from(document.getElementById('pdf-render')).save().then(() => { head.style.display = 'none'; dom.watermark.classList.add('hidden'); dom.resBody.style.color = originalColor; });
+            head.classList.remove('hidden');
+            const originalColor = document.getElementById('res-body').style.color;
+            document.getElementById('res-body').style.color = '#111';
+            
+            html2pdf().set({ margin: 15, filename: `MarketMind_Strategic_Report.pdf`, html2canvas: { scale: 3 }, jsPDF: { unit: 'mm', format: 'a4' } })
+            .from(el).save().then(() => {
+                head.classList.add('hidden');
+                document.getElementById('res-body').style.color = originalColor;
+            });
         };
 
-        dom.copyBtn.onclick = () => { if (state.result) { navigator.clipboard.writeText(state.result).then(() => showToast("OK PAK, SUDAH DISALIN!")); } };
-
-        renderFeatures();
+        window.onload = async () => { if(state.apiKey) { if(await validateKey(state.apiKey)) enterDashboard(); else localStorage.removeItem(STORE_KEY); } };
     </script>
 </body>
 </html>
